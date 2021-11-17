@@ -47,6 +47,7 @@ configure_cargo() {
         fi
     done
 
+    mkdir /.cargo
     cat > /.cargo/config.toml <<EOF
 [build]
 target = "${rust_target}"
