@@ -53,7 +53,7 @@ configure_cargo() {
 target = "${rust_target}"
 
 [target.${rust_target}]
-linker = ${gcc_target}-gcc"
+linker = "${gcc_target}-gcc"
 EOF
 }
 
