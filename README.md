@@ -8,7 +8,6 @@ It's faster than buildx with the vanilla Rust image because it configures cargo 
 
 Prepare a Dockerfile, such as:
 ```
-ARG BUILDPLATFORM
 FROM --platform=$BUILDPLATFORM jonoh/rust-crossbuild AS builder
 ARG TARGETPLATFORM
 WORKDIR /usr/src/myapp
@@ -21,7 +20,7 @@ COPY --from=builder /usr/local/cargo/bin/myapp /usr/local/bin/myapp
 CMD ["myapp"]
 ```
 
-It's important to include the `BUILDPLATFORM` and `TARGETPLATFORM` args, and the `--platform=$BUILDPLATFORM` in the `FROM`. These will ensure that the builder image is native to the system, while the output is native to the target system. The rest of the Dockerfile is up to you, the above is just an example.
+It's important to include the `TARGETPLATFORM` arg, and the `--platform=$BUILDPLATFORM` in the `FROM`. These will ensure that the builder image is native to the system, while the output is native to the target system. The rest of the Dockerfile is up to you, the above is just an example.
 
 Then use docker buildx for a cross-platform build. For example:
 ```
