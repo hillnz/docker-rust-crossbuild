@@ -30,7 +30,11 @@ docker buildx build --platform linux/amd64,linux/arm64 -t myapp --push .
 
 ## Platforms
 
-Any combination (build/target) of these platforms should work:
+Build platforms
+- linux/amd64
+- linux/arm64
+
+Target platforms
 - linux/amd64
 - linux/arm64
 - linux/arm/v7
