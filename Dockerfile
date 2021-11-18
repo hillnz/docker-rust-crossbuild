@@ -8,5 +8,6 @@ COPY ./cargo-cross.sh ./
 
 RUN ./cargo-cross.sh install
 
+ONBUILD ARG BUILDPLATFORM
 ONBUILD ARG TARGETPLATFORM
 ONBUILD RUN ./cargo-cross.sh configure
