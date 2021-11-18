@@ -31,10 +31,18 @@ install_deps() {
 
 
 configure_cargo() {
-    if [ "$BUILDPLATFORM" = "$TARGETPLATFORM" ]; then
-        # Native
+    if [ -z "$TARGETPLATFORM" ]; then
+        echo "WARNING: TARGETPLATFORM not set, cargo will build natively. Are you using buildx?"
         return
     fi
+
+    if [ "$BUILDPLATFORM" = "$TARGETPLATFORM" ]; then
+        # Native
+        echo "Native build, no cargo config required."
+        return
+    fi
+    
+    echo "Configuring cargo for $TARGETPLATFORM."
 
     # Find target
     for i in $(seq 0 3 $(( ${#targets[@]} - 1 )) ); do
