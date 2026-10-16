@@ -1,4 +1,4 @@
-FROM rust:1.71.1
+FROM rust:1.99.1
 
 ARG TARGETPLATFORM
 
